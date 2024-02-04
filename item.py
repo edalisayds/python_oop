@@ -35,6 +35,13 @@ class Item:
         return self.name 
     '''
 
+    @name.setter
+    def name(self, value):
+        if len(value) > 10:
+            raise Exception("Name is too long")
+        else:
+            self.__name = value
+
     def calculate_total_price(self):
         return self.price * self.quantity
 
