@@ -11,7 +11,8 @@ class Item:
         assert quantity >= 0, f"Quantity {quantity} is not greater than or equal to zero!"
 
         #Assign to self object
-        self._name = name
+        #Double underscore means that the attributes is only accessible on class level, outside of class it's not allowed to be used
+        self.__name = name
         self.price = price
         self.quantity = quantity
 
@@ -20,7 +21,7 @@ class Item:
 
     @property
     def name(self):
-        return self._name
+        return self.__name
     '''
     Property Decorator = Read-Only Attribute
     Hence, below block of code is illegal 
