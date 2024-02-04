@@ -11,12 +11,28 @@ class Item:
         assert quantity >= 0, f"Quantity {quantity} is not greater than or equal to zero!"
 
         #Assign to self object
-        self.name = name
+        self._name = name
         self.price = price
         self.quantity = quantity
 
         #Actions to execute
         Item.all.append(self)
+
+    @property
+    def name(self):
+        return self._name
+    '''
+    Property Decorator = Read-Only Attribute
+    Hence, below block of code is illegal 
+    because then it would not allow the the name to be initialized in def __init__ when self.name is instantiated
+
+    def __init__(self, name: str):
+        self.name = name
+
+    @property
+    def name(self):
+        return self.name 
+    '''
 
     def calculate_total_price(self):
         return self.price * self.quantity
@@ -72,3 +88,7 @@ class Item:
 
     def __repr__(self):
         return f"{self.__class__.__name__}(\"{self.name}\", {self.price}, {self.quantity})"
+
+    @property
+    def read_only_name(self):
+        return "AAA"
